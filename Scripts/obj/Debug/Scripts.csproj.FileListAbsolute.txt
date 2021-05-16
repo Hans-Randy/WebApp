@@ -1,0 +1,6 @@
+C:\Dev\C#\WebApp\Scripts\bin\Debug\Scripts.dll
+C:\Dev\C#\WebApp\Scripts\bin\Debug\Scripts.pdb
+C:\Dev\C#\WebApp\Scripts\obj\Debug\Scripts.csprojAssemblyReference.cache
+C:\Dev\C#\WebApp\Scripts\obj\Debug\Scripts.csproj.CoreCompileInputs.cache
+C:\Dev\C#\WebApp\Scripts\obj\Debug\Scripts.dll
+C:\Dev\C#\WebApp\Scripts\obj\Debug\Scripts.pdb

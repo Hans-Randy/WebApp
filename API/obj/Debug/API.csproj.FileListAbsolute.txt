@@ -1,0 +1,14 @@
+C:\Dev\C#\WebApp\API\bin\Debug\API.dll.config
+C:\Dev\C#\WebApp\API\bin\Debug\API.dll
+C:\Dev\C#\WebApp\API\bin\Debug\API.pdb
+C:\Dev\C#\WebApp\API\bin\Debug\EntityFramework.dll
+C:\Dev\C#\WebApp\API\bin\Debug\EntityFramework.SqlServer.dll
+C:\Dev\C#\WebApp\API\bin\Debug\EntityFramework.xml
+C:\Dev\C#\WebApp\API\bin\Debug\EntityFramework.SqlServer.xml
+C:\Dev\C#\WebApp\API\obj\Debug\API.csprojAssemblyReference.cache
+C:\Dev\C#\WebApp\API\obj\Debug\API.csproj.CoreCompileInputs.cache
+C:\Dev\C#\WebApp\API\obj\Debug\API.csproj.CopyComplete
+C:\Dev\C#\WebApp\API\obj\Debug\API.dll
+C:\Dev\C#\WebApp\API\obj\Debug\API.pdb
+C:\Dev\C#\WebApp\API\bin\Debug\Newtonsoft.Json.dll
+C:\Dev\C#\WebApp\API\bin\Debug\Newtonsoft.Json.xml
