@@ -40,6 +40,7 @@ namespace API
     
         public ProductType()
         {
+            
             this.Products = new HashSet<Product>();
     		OnCreated();
         }

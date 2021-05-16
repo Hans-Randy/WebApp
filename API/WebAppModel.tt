@@ -67,6 +67,7 @@ using Newtonsoft.Json;
 
     public <#=code.Escape(entity)#>()
     {
+        <#=typeMapper.GetSimpleProperties(entity).Any(x => x.Name == "DateCreated") ? "DateCreated = DateTime.Now;" : ""#>
 <#
         foreach (var edmProperty in propertiesWithDefaultValues)
         {

@@ -33,5 +33,7 @@ namespace API
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserActivity> UserActivities { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<LineOrderDetail> LineOrderDetails { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

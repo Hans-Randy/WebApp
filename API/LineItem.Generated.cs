@@ -40,6 +40,7 @@ namespace API
     
         public LineItem()
         {
+            
     		OnCreated();
         }
     
@@ -47,6 +48,8 @@ namespace API
         public int OrderID { get; set; }
         public int ProductID { get; set; }
         public string Description { get; set; }
+        public int Quantity { get; set; }
+        public decimal Amount { get; set; }
     
        [JsonIgnore] public virtual Order Order { get; set; }
        [JsonIgnore] public virtual Product Product { get; set; }

@@ -1,0 +1,6 @@
+C:\Dev\C#\WebApp\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Dev\C#\WebApp\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Dev\C#\WebApp\Model\bin\Debug\Model.dll
+C:\Dev\C#\WebApp\Model\bin\Debug\Model.pdb
+C:\Dev\C#\WebApp\Model\obj\Debug\Model.dll
+C:\Dev\C#\WebApp\Model\obj\Debug\Model.pdb

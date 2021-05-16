@@ -40,6 +40,7 @@ namespace API
     
         public Product()
         {
+            
             this.LineItems = new HashSet<LineItem>();
     		OnCreated();
         }
@@ -47,6 +48,7 @@ namespace API
         public int ID { get; set; }
         public string Name { get; set; }
         public int ProductTypeID { get; set; }
+        public decimal Price { get; set; }
     
     
        [JsonIgnore] public virtual ICollection<LineItem> LineItems { get; set; }

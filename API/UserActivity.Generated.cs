@@ -40,6 +40,7 @@ namespace API
     
         public UserActivity()
         {
+            DateCreated = DateTime.Now;
     		OnCreated();
         }
     
@@ -50,5 +51,6 @@ namespace API
         public System.DateTime DateCreated { get; set; }
     
        [JsonIgnore] public virtual ActivityType ActivityType { get; set; }
+       [JsonIgnore] public virtual User User { get; set; }
     }
 }

@@ -8,6 +8,28 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="UserActivities" Relationship="Self.FK_UserActivity_ActivityType" FromRole="ActivityType" ToRole="UserActivity" />
   </EntityType>
+  <EntityType Name="DiaryItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="DiaryItemTypeID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DiaryItemType" Relationship="Self.FK_DiaryItem_DiaryItemType" FromRole="DiaryItem" ToRole="DiaryItemType" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_DiaryItem_Order" FromRole="DiaryItem" ToRole="Order" />
+    <NavigationProperty Name="User" Relationship="Self.FK_DiaryItem_User" FromRole="DiaryItem" ToRole="User" />
+  </EntityType>
+  <EntityType Name="DiaryItemType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DiaryItems" Relationship="Self.FK_DiaryItem_DiaryItemType" FromRole="DiaryItemType" ToRole="DiaryItem" />
+  </EntityType>
   <EntityType Name="LineItem">
     <Key>
       <PropertyRef Name="ID" />
@@ -27,6 +49,7 @@
     <Property Name="OrderNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DiaryItems" Relationship="Self.FK_DiaryItem_Order" FromRole="Order" ToRole="DiaryItem" />
     <NavigationProperty Name="LineItems" Relationship="Self.FK_LineItem_Order" FromRole="Order" ToRole="LineItem" />
     <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
   </EntityType>
@@ -45,7 +68,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
   </EntityType>
   <EntityType Name="User">
@@ -58,6 +81,7 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DiaryItems" Relationship="Self.FK_DiaryItem_User" FromRole="User" ToRole="DiaryItem" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
     <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType" FromRole="User" ToRole="UserType" />
   </EntityType>
@@ -90,6 +114,42 @@
       </Principal>
       <Dependent Role="UserActivity">
         <PropertyRef Name="ActivityTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiaryItem_DiaryItemType">
+    <End Role="DiaryItemType" Type="Self.DiaryItemType" Multiplicity="1" />
+    <End Role="DiaryItem" Type="Self.DiaryItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DiaryItemType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DiaryItem">
+        <PropertyRef Name="DiaryItemTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiaryItem_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="DiaryItem" Type="Self.DiaryItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DiaryItem">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DiaryItem_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="DiaryItem" Type="Self.DiaryItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DiaryItem">
+        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -153,8 +213,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="WebAppDevEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="WebAppDatabase" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ActivityTypes" EntityType="Self.ActivityType" />
+    <EntitySet Name="DiaryItems" EntityType="Self.DiaryItem" />
+    <EntitySet Name="DiaryItemTypes" EntityType="Self.DiaryItemType" />
     <EntitySet Name="LineItems" EntityType="Self.LineItem" />
     <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="Products" EntityType="Self.Product" />
@@ -165,6 +227,18 @@
     <AssociationSet Name="FK_UserActivity_ActivityType" Association="Self.FK_UserActivity_ActivityType">
       <End Role="ActivityType" EntitySet="ActivityTypes" />
       <End Role="UserActivity" EntitySet="UserActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiaryItem_DiaryItemType" Association="Self.FK_DiaryItem_DiaryItemType">
+      <End Role="DiaryItemType" EntitySet="DiaryItemTypes" />
+      <End Role="DiaryItem" EntitySet="DiaryItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiaryItem_Order" Association="Self.FK_DiaryItem_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="DiaryItem" EntitySet="DiaryItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DiaryItem_User" Association="Self.FK_DiaryItem_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="DiaryItem" EntitySet="DiaryItems" />
     </AssociationSet>
     <AssociationSet Name="FK_LineItem_Order" Association="Self.FK_LineItem_Order">
       <End Role="Order" EntitySet="Orders" />

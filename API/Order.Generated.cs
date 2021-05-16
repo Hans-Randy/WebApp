@@ -40,6 +40,7 @@ namespace API
     
         public Order()
         {
+            DateCreated = DateTime.Now;
             this.LineItems = new HashSet<LineItem>();
     		OnCreated();
         }

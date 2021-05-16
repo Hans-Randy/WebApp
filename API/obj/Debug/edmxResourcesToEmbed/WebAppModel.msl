@@ -1,9 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="WebAppModelStoreContainer" CdmEntityContainer="WebAppDevEntities">
+  <EntityContainerMapping StorageEntityContainer="WebAppModelStoreContainer" CdmEntityContainer="WebAppDatabase">
     <EntitySetMapping Name="ActivityTypes">
       <EntityTypeMapping TypeName="WebAppModel.ActivityType">
         <MappingFragment StoreEntitySet="ActivityType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiaryItems">
+      <EntityTypeMapping TypeName="WebAppModel.DiaryItem">
+        <MappingFragment StoreEntitySet="DiaryItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="DiaryItemTypeID" ColumnName="DiaryItemTypeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiaryItemTypes">
+      <EntityTypeMapping TypeName="WebAppModel.DiaryItemType">
+        <MappingFragment StoreEntitySet="DiaryItemType">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>

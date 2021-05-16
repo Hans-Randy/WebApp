@@ -40,6 +40,7 @@ namespace API
     
         public ActivityType()
         {
+            
             this.UserActivities = new HashSet<UserActivity>();
     		OnCreated();
         }

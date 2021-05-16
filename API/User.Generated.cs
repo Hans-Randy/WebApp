@@ -40,7 +40,9 @@ namespace API
     
         public User()
         {
+            
             this.Orders = new HashSet<Order>();
+            this.UserActivities = new HashSet<UserActivity>();
     		OnCreated();
         }
     
@@ -50,9 +52,12 @@ namespace API
         public string Password { get; set; }
         public bool Active { get; set; }
         public Nullable<System.DateTime> LastLoginDate { get; set; }
+        public string Name { get; set; }
     
     
        [JsonIgnore] public virtual ICollection<Order> Orders { get; set; }
        [JsonIgnore] public virtual UserType UserType { get; set; }
+    
+       [JsonIgnore] public virtual ICollection<UserActivity> UserActivities { get; set; }
     }
 }

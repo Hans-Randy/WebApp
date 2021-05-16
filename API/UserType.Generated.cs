@@ -40,6 +40,7 @@ namespace API
     
         public UserType()
         {
+            
             this.Users = new HashSet<User>();
     		OnCreated();
         }
