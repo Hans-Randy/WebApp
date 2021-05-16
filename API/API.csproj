@@ -79,6 +79,7 @@
     <Compile Include="UserType.Generated.cs">
       <DependentUpon>WebAppModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="WebAppDatabase.cs" />
     <Compile Include="WebAppModel.Context.Generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
